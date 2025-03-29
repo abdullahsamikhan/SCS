@@ -1,0 +1,590 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1c2526;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px; /* Reduced horizontal padding from 80px to 40px */
+    background-color: transparent; /* Initially transparent */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+    z-index: 1000;
+}
+.navbar.scrolled {
+    background-color: #1c2526; /* Background color when scrolled */
+}
+.logo {
+    line-height: 17px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+#logo1{
+    font-size: 24px;
+    /* font-family:'Times New Roman', Times, serif; */
+}
+#logo2{
+    font-size: 15px;
+}
+/* Navigation links container */
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: static; /* Let flexbox handle the positioning */
+    transform: none; /* Remove the translate transforms */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Styling individual nav items */
+.nav-links li {
+    padding: 8px 25px;
+    border: 1px solid rgba(129, 117, 117, 0.24); /* Slight border around links */
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden; /* Ensures background stays within the border */
+    transition: color 0.4s ease; /* Smooth text color transition */
+    z-index: 1; /* Keep text on top */
+}
+
+/* Background hover effect (hidden initially) */
+.nav-links li::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black; /* Hover background color */
+    left: 0;
+    top: 100%; /* Hide the background off-screen (below) */
+    border-radius: 50px; /* Initial border radius */
+    transition: all 0.4s ease; /* Smooth transition for background */
+    z-index: -1; /* Send background behind the text */
+}
+
+/* Hover state for background */
+.nav-links li:hover::after {
+    top: 0; /* Slide the background up into view */
+    border-radius: 50px; /* Keep border-radius */
+}
+
+/* Hover state for text */
+.nav-links a:hover {
+    text-decoration: none;
+    color: #ffffff; /* Change text color to white */
+}
+
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#call-link i {
+    font-size: 17px;
+}
+.icon-link {
+    color: #ffffff;
+    font-size: 20px;
+    width: 24px; /* Fixed width for consistency */
+    height: 24px; /* Fixed height for consistency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.icon-link i {
+    font-size: 20px; /* Ensure all icons have the same font size */
+}
+.icon-link:hover {
+    color: #ff5733;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 80px;
+    background-color: #1c2526;
+}
+.hero-content h1 {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+.hero-content p {
+    font-size: 20px;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: #d3d3d3;
+}
+.cta-btn {
+    display: inline-block;
+    padding: 16px 48px;
+    background-color: #ff5733;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.cta-btn:hover {
+    background-color: #e64a2e;
+}
+
+/* Services Section */
+.services {
+    padding: 120px 80px;
+    background-color: #252f30;
+    text-align: center;
+}
+.section-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 64px;
+}
+.services-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 40px;
+    /* background-color: #121212;  */
+}
+
+/* Service Card */
+.service-card {
+    background-color: #1c2526;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: left;
+    width: 300px; /* Fixed width for consistency */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon Styling */
+.service-card .icon {
+    font-size: 30px;
+    color: #ff5733; /* Orange color for icons */
+    margin-bottom: 20px;
+}
+
+/* Heading */
+.service-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff; /* White headings */
+    margin-bottom: 16px;
+}
+
+/* Description */
+.service-card p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #d3d3d3; /* Light gray for descriptions */
+    margin-bottom: 24px;
+}
+
+/* Learn More Button */
+.service-card .learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #ff5733; /* Orange background */
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.service-card .learn-more i {
+    font-size: 14px;
+}
+
+.service-card .learn-more:hover {
+    background-color: #e04e2d; /* Slightly darker orange on hover */
+    transform: translateX(5px); /* Slight slide effect on hover */
+}
+
+/* About Section */
+.about {
+    padding: 120px 80px;
+    background-color: #1c2526;
+    text-align: center;
+}
+.about p {
+    font-size: 20px;
+    font-weight: 400;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #d3d3d3;
+}
+
+/* About Page Hero Section */
+.about-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1c2526;
+    padding: 80px 40px;
+}
+
+.studio-title
+{
+    display: flex;
+    font-size: 20px;
+    gap: 10px;
+}
+
+.about-hero-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+    align-items: center;
+}
+
+.about-hero-content {
+    flex: 1;
+    min-width: 300px;
+    text-align: center; /* Center the content */
+}
+
+.about-hero-content .heading-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.about-hero-content .heading-wrapper span:first-child {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.about-hero-content .heading-wrapper .studio-title {
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.about-hero-content .heading-wrapper .studio-title .creative {
+    color: #ff5733; /* Orange for "Creative" */
+}
+
+.about-hero-content h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ff5733;
+    margin-bottom: 24px;
+}
+
+.about-hero-content p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #d3d3d3;
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-hero-content a {
+    color: #ff5733;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.about-hero-content a:hover {
+    color: #e64a2e;
+}
+
+.about-hero-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-hero-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Responsive Design for About Page */
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 60px 20px;
+    }
+
+    .about-hero-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .about-hero-content .heading-wrapper span:first-child {
+        font-size: 36px;
+    }
+
+    .about-hero-content .heading-wrapper .studio-title {
+        font-size: 36px;
+    }
+
+    .about-hero-content h2 {
+        font-size: 20px;
+    }
+
+    .about-hero-content p {
+        font-size: 16px;
+    }
+
+    .about-hero-image img {
+        height: 200px;
+    }
+}
+
+/* Contact Section */
+.contact {
+    padding: 120px 80px;
+    background-color: #252f30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Contact Form Section */
+.contact-form-section {
+    flex: 1;
+    min-width: 300px;
+    background-color: #1c2526;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: #2a3435;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #ff5733;
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form button {
+    padding: 12px 20px;
+    background-color: #ff5733;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    align-self: flex-start;
+}
+
+#contact-form button:hover {
+    background-color: #e04e2d;
+    transform: translateX(5px);
+}
+
+/* Contact Details Section */
+.contact-details-section {
+    flex: 1;
+    min-width: 300px;
+    background-color: #1c2526;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-details-section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-item i {
+    font-size: 24px;
+    color: #ff5733;
+}
+
+.contact-item a {
+    color: #d3d3d3;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #ff5733;
+}
+
+/* Responsive Design for Contact Section */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-form-section,
+    .contact-details-section {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+/* Service Page Section */
+.service-page {
+    padding: 120px 80px;
+    background-color: #252f30;
+    text-align: center;
+}
+.service-page h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+.service-page p {
+    font-size: 20px;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #d3d3d3;
+}
+
+/* Footer */
+footer {
+    padding: 40px 80px;
+    background-color: #1c2526;
+    text-align: center;
+    border-top: 1px solid #3a4445;
+}
+footer p {
+    font-size: 14px;
+    color: #d3d3d3;
+    margin-bottom: 16px;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: #ff5733;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+}
+.slide-in {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideIn 0.8s ease forwards;
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+@keyframes slideIn {
+    to { opacity: 1; transform: translateY(0); }
+}
