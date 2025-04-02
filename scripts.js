@@ -1,52 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.fade-in, .slide-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    elements.forEach(el => {
-        el.style.animationPlayState = 'paused';
-        observer.observe(el);
-    });
-
-    // Fetch and set icon links
-    fetch('http://localhost:3000/config')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('call-link').href = data.callLink;
-            document.getElementById('whatsapp-link').href = data.whatsappLink;
-            document.getElementById('email-link').href = data.emailLink;
-        })
-        .catch(error => console.error('Error fetching config:', error));
-
-    // Contact Form Submission
     const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const response = await fetch('http://localhost:3000/contact', {
-                method: 'POST',
-                body: JSON.stringify(Object.fromEntries(formData)),
-                headers: { 'Content-Type': 'application/json' }
-            });
-            if (response.ok) {
-                alert('Message sent successfully!');
-                form.reset();
-            } else {
-                alert('Error sending message.');
-            }
-        });
-    }
-
-    // Navbar background on scroll
+    const formMessage = document.getElementById('form-message');
     const navbar = document.querySelector('.navbar');
+
+    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -54,4 +11,61 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('scrolled');
         }
     });
+
+    // Contact form submission
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Create payload
+            const data = { name, email, message };
+
+            try {
+                console.log('Submitting form data:', data); // Log the data being sent
+                // Send data to backend and capture the response
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                console.log('Response status:', response.status); // Log the response status
+                const result = await response.json();
+                console.log('Response data:', result); // Log the response data
+
+                if (response.ok) {
+                    formMessage.textContent = result.message; // Should be "Message sent successfully"
+                    formMessage.classList.add('show'); // Trigger drop-down animation
+                    form.reset(); // Clear the form
+                    // Hide the message after 3 seconds
+                    setTimeout(() => {
+                        formMessage.classList.remove('show');
+                    }, 3000);
+                } else {
+                    formMessage.textContent = result.message || 'Error submitting form';
+                    formMessage.classList.add('show'); // Trigger drop-down animation
+                    // Hide the message after 3 seconds
+                    setTimeout(() => {
+                        formMessage.classList.remove('show');
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error.message);
+                console.error('Error stack:', error.stack);
+                formMessage.textContent = 'Error submitting form';
+                formMessage.classList.add('show'); // Trigger drop-down animation
+                // Hide the message after 3 seconds
+                setTimeout(() => {
+                    formMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+    }
 });

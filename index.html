@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Notification message at the top -->
+    <div id="form-message" class="notification"></div>
+
     <!-- Navbar -->
     <header class="navbar">
         <div class="logo">
@@ -20,7 +23,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="nav-icons">
@@ -48,7 +51,7 @@
                 <i class="fas fa-paint-brush icon"></i>
                 <h3>Web Designing</h3>
                 <p>Crafting visually stunning and functional websites.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                <a href="/services/web-designing.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
     
             <!-- Web Development Card -->
@@ -56,7 +59,7 @@
                 <i class="fas fa-code icon"></i>
                 <h3>Web Development</h3>
                 <p>Building robust and scalable web applications.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                <a href="/services/web-development.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
     
             <!-- Video Editing Card -->
@@ -64,7 +67,7 @@
                 <i class="fas fa-video icon"></i>
                 <h3>Video Editing</h3>
                 <p>Creating engaging and professional video content.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                <a href="/services/video-editing.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
     
             <!-- Thumbnail Designing Card -->
@@ -72,7 +75,7 @@
                 <i class="fas fa-image icon"></i>
                 <h3>Thumbnail Designing</h3>
                 <p>Designing eye-catching thumbnails to boost your video's click-through rates.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                <a href="/services/thumbnail.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <!-- Graphic Designing Card -->
@@ -80,7 +83,7 @@
                 <i class="fas fa-pen-nib icon"></i>
                 <h3>Graphic </br> Designing</h3>
                 <p>Creating stunning visuals and branding materials to elevate your business.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                <a href="/services/graphic-designing.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <!-- YouTube Automation Card -->
@@ -88,7 +91,7 @@
                 <i class="fab fa-youtube icon"></i>
                 <h3>YouTube Automation</h3>
                 <p>Streamlining your YouTube channel with automated content creation.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                <a href="/services/ytautomation.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -107,9 +110,9 @@
             <div class="contact-form-section fade-in">
                 <h2>Contact Us</h2>
                 <form id="contact-form">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                     <button type="submit" class="cta-btn slide-in">Send Message</button>
                 </form>
             </div>
@@ -119,15 +122,15 @@
                 <h2>Reach Out</h2>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    <a href="tel:+923484778754">+92 3484778754</a>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:contact@agencee.com">contact@saeedcreativestudio.com</a>
+                    <a href="mailto:samiabdullah324@gmail.com">samiabdullah324@gmail.com</a>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/1234567890" target="_blank">Chat on WhatsApp</a>
+                    <a href="https://wa.me/923484778754" target="_blank">Chat on WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -139,7 +142,7 @@
         <div class="footer-links">
             <a href="#services">Services</a>
             <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <a href="#contact">Contact</a>
         </div>
     </footer>
 

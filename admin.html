@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Saeed Creative Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <h1 id="logo1">Saeed</h1>
+            <p id="logo2">Creative Studio</p>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <a href="#" class="icon-link" id="call-link"><i class="fas fa-phone"></i></a>
+            <a href="#" class="icon-link" id="whatsapp-link"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="icon-link" id="email-link"><i class="fas fa-envelope"></i></a>
+        </div>
+    </header>
+
+    <!-- Admin Section -->
+    <section class="admin">
+        <div class="admin-container fade-in">
+            <h2 class="section-title">Admin Dashboard</h2>
+            <h3>Contact Form Submissions</h3>
+            <div class="admin-controls">
+                <div class="sort">
+                    <input type="text" id="search-input" placeholder="Search by name or email">
+                </div>
+                <div class="contact-controls">
+                    <button id="refresh-btn" class="cta-btn">Refresh</button>
+                    <button id="delete-all-btn" class="cta-btn delete-btn">Delete All</button>
+                    <button id="export-btn">Export as CSV</button>
+                </div>
+            </div>
+            <table id="submissions-table">
+                <thead>
+                    <tr>
+                        <th data-sort="name">Name</th>
+                        <th data-sort="email">Email</th>
+                        <th data-sort="message">Message</th>
+                        <th data-sort="date">Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="submissions-body">
+                    <!-- Submissions will be populated here by JavaScript -->
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button id="prev-page" disabled>Previous</button>
+                <span id="page-info">Page 1</span>
+                <button id="next-page">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Saeed Creative Studio. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="index.html#services">Services</a>
+            <a href="about.html">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>
