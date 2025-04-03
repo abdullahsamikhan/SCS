@@ -107,4 +107,35 @@ router.post('/', async (req, res) => {
     }
 });
 
+// DELETE route to delete a single contact submission by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        const contactId = req.params.id;
+        const contact = await Contact.findByIdAndDelete(contactId);
+
+        if (!contact) {
+            return res.status(404).json({ message: 'Contact submission not found' });
+        }
+
+        console.log(`Deleted contact submission with ID: ${contactId}`);
+        res.status(200).json({ message: 'Contact submission deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting contact submission:', error);
+        res.status(500).json({ message: 'Error deleting submission', error: error.message });
+    }
+});
+
+// DELETE route to delete all contact submissions
+router.delete('/', async (req, res) => {
+    try {
+        const result = await Contact.deleteMany({});
+
+        console.log(`Deleted ${result.deletedCount} contact submissions`);
+        res.status(200).json({ message: 'All contact submissions deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting all contact submissions:', error);
+        res.status(500).json({ message: 'Error deleting all submissions', error: error.message });
+    }
+});
+
 module.exports = router;

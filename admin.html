@@ -39,6 +39,16 @@
             <div class="admin-controls">
                 <div class="sort">
                     <input type="text" id="search-input" placeholder="Search by name or email">
+                    <select id="sort-by">
+                        <option value="name">Sort by Name</option>
+                        <option value="email">Sort by Email</option>
+                        <option value="message">Sort by Message</option>
+                        <option value="date" selected>Sort by Date</option>
+                    </select>
+                    <select id="sort-order">
+                        <option value="1">Ascending</option>
+                        <option value="-1" selected>Descending</option>
+                    </select>
                 </div>
                 <div class="contact-controls">
                     <button id="refresh-btn" class="cta-btn">Refresh</button>
@@ -49,10 +59,10 @@
             <table id="submissions-table">
                 <thead>
                     <tr>
-                        <th data-sort="name">Name</th>
-                        <th data-sort="email">Email</th>
-                        <th data-sort="message">Message</th>
-                        <th data-sort="date">Date</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
